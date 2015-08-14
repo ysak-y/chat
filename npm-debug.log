@@ -1,0 +1,55 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'info', 'material-desing-lite' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.37
+4 verbose request where is /material-desing-lite
+5 verbose request registry https://registry.npmjs.org/
+6 verbose request id 201b2c5700133bfe
+7 verbose url raw /material-desing-lite
+8 verbose url resolving [ 'https://registry.npmjs.org/', './material-desing-lite' ]
+9 verbose url resolved https://registry.npmjs.org/material-desing-lite
+10 verbose request where is https://registry.npmjs.org/material-desing-lite
+11 info trying registry request attempt 1 at 23:31:37
+12 http GET https://registry.npmjs.org/material-desing-lite
+13 http 404 https://registry.npmjs.org/material-desing-lite
+14 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+14 verbose headers   'content-type': 'application/json',
+14 verbose headers   'cache-control': 'max-age=0',
+14 verbose headers   'content-length': '51',
+14 verbose headers   'accept-ranges': 'bytes',
+14 verbose headers   date: 'Mon, 03 Aug 2015 14:31:38 GMT',
+14 verbose headers   via: '1.1 varnish',
+14 verbose headers   age: '0',
+14 verbose headers   connection: 'keep-alive',
+14 verbose headers   'x-served-by': 'cache-nrt6135-NRT',
+14 verbose headers   'x-cache': 'MISS',
+14 verbose headers   'x-cache-hits': '0',
+14 verbose headers   'x-timer': 'S1438612297.799603,VS0,VE527' }
+15 silly registry.get cb [ 404,
+15 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+15 silly registry.get     'content-type': 'application/json',
+15 silly registry.get     'cache-control': 'max-age=0',
+15 silly registry.get     'content-length': '51',
+15 silly registry.get     'accept-ranges': 'bytes',
+15 silly registry.get     date: 'Mon, 03 Aug 2015 14:31:38 GMT',
+15 silly registry.get     via: '1.1 varnish',
+15 silly registry.get     age: '0',
+15 silly registry.get     connection: 'keep-alive',
+15 silly registry.get     'x-served-by': 'cache-nrt6135-NRT',
+15 silly registry.get     'x-cache': 'MISS',
+15 silly registry.get     'x-cache-hits': '0',
+15 silly registry.get     'x-timer': 'S1438612297.799603,VS0,VE527' } ]
+16 error 404 404 Not Found: material-desing-lite
+16 error 404
+16 error 404 'material-desing-lite' is not in the npm registry.
+16 error 404 You should bug the author to publish it
+16 error 404
+16 error 404 Note that you can also install from a
+16 error 404 tarball, folder, or http url, or git url.
+17 error System Darwin 14.4.0
+18 error command "node" "/usr/local/bin/npm" "info" "material-desing-lite"
+19 error cwd /Users/yamadayoshiaki/GoogleDrive/dev/electron_test
+20 error node -v v0.10.37
+21 error npm -v 1.4.28
+22 error code E404
+23 verbose exit [ 1, true ]

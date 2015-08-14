@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>chat</title>
+
+<link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/balloon.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script type="text/javascript">
+	
+	var ID;
+	window.jQuery = window.$ = require('./node_modules/jquery/dist/jquery.min');
+
+	$(function(){
+		
+		console.log("connect start");
+		var socketio = io.connect("http://localhost:1337");
+		
+		socketio.emit("login");
+		socketio.on("init", function(arr){
+			
+			var model = arr[0];
+			ID = arr[1];
+			var messageField = new MessageField(socketio, model);
+			var nameText = new NameText();
+			var footer = new Footer(socketio);
+
+		});
+	});
+	
+</script>
+
+<script src="bower_components/material-design-lite/material.min.js"></script>
+<script src="node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="lib/footerFixed.js"></script>
+<script src="bower_components/underscore/underscore-min.js"></script>
+<script src="bower_components/backbone/backbone-min.js"></script>
+<script src="lib/Model.js"></script>
+<script src="lib/view.js"></script>
+
+</head>
+<body>
+
+	<div class="mdl-layout mdl-js-layout">
+		<div class="mdl-layout__content">	
+
+			<div class="mdl-grid mdl-grid--no-spacing main_content">
+				
+				<!-- ここから左半分 -->
+				<div class="mdl-cell mdl-cell--2-col sidebar">
+					
+					<div class="mdl-grid mdl-grid--no-spacing">
+						<div class="mdl-cell mdl-cell--12-col mdl-shadow--4dp" id="profile">
+							<div id="face" class="mdl-cell mdl-cell--12-col">
+								<img src="img/human.png" height="100" width="100" alt="face image">
+								<!-- ここに顔画像のimg要素を置く -->
+							</div>
+							<div id="nameText" class="mdl-cell mdl-cell--12-col"></div>
+						</div>
+
+						<table class="menutable mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+							<tr>
+								<td>
+									<i class="material-icons menu-icon">people</i>友達
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<i class="material-icons menu-icon">comment</i>チャット
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<i class="material-icons menu-icon">settings</i>設定
+								</td>
+							</tr>
+						</table>
+					</div>	
+				</div>
+
+				<!-- ここから右半分 -->
+				<div id="rightField" class="mdl-cell mdl-cell--6-col mdl-grid mdl-grid--no-spacing">
+
+					<!-- ヘッダー -->
+					<div id="header" class="mdl-cell mdl-cell--12-col background-green">
+					 My Chat
+					</div>
+
+
+					<!-- メッセージ表示エリア -->
+					<div id="messageFieldContainer" class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+						
+						<table id="messageField" class="mdl-cell mdl-cell--12-col"></table>
+
+					</div>
+
+					<!-- スタンプウィンドウ -->
+
+					<div id="stampFieldContainer" class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col">
+						
+							<table id="stampField" class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+							</table>
+
+					</div>
+
+					<!-- テキストエリア -->
+						
+					<div class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col">
+					
+							<div id="footer" class="mdl-cell mdl-cell--12-col mdl-shadow--4dp mdl-grid mdl-grid--no-spacing mdl-color--white">
+
+								<div class="mdl-cell mdl-cell--1-col">
+									<button id="stampButton" class="mdl-button mdl-js-button mdl-button--icon">
+										<i class="material-icons">mood</i>
+									</button>
+								</div>
+
+								<div class="mdl-cell mdl-cell--5-col">
+									<div class="mdl-textfield mdl-js-textfield textfield-demo">
+										<input class="mdl-textfield__input" type="text" id="textBox" />
+										<label class="mdl-textfield__label" for="sample1">Text...</label>
+									</div>
+								</div>
+
+								<div class="mdl-cell mdl-cell--2-col">
+									<button id="sendButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+										送信
+									</button>
+
+								</div>
+							</div>
+
+					</div>
+
+
+				</div><!-- ここまでが右半分-->
+			
+			</div><!-- ここまでがgrid -->
+
+		
+		</div><!-- ここまでがmdl-layout__content -->
+
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+
+.main_content{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.sidebar{
+	height:100%;
+	background-color:#473545;
+}
+
+.text-box{
+	outline:none;
+	margin-top:5px;
+}
+
+#rightField{
+	height: calc(100% - 63px);
+}
+
+#messageFieldContainer{
+	background-color:rgb(245, 245, 245);
+	overflow-y: scroll;
+	height: 93%;
+}
+
+#stampFieldContainer{
+	height:80px;
+	margin-top:-80px;
+	display:none;
+	z-index:1;
+}
+
+#stampField{
+	background-color:rgb(230, 230, 230);
+	height:80px;
+
+}
+
+#header{
+	height:40px;
+	text-align:center;
+	font-size:20px;
+	padding-top:10px;
+	color:white;
+}
+
+.stamp{
+	width: 65px;
+	height: 55px;
+}
+
+.stampInMessageField{
+	width: 117px;
+	height: 99px;
+	padding: 10px;
+}
+
+#stampField>.mdl-cell--2-col{
+	margin-top: 10px;
+	text-align:center;
+
+}
+
+#stampField>tr{
+	overflow-x: scroll;
+}
+
+#profile{
+	height:250px;
+}
+
+#nameText{
+	margin-top:15px;
+	text-align:center;
+	color:white;
+	font-size:15px;
+}
+
+#face{
+	margin-top:50px;
+	text-align:center;
+}
+
+#sendButton{
+	margin-left:30px;
+	margin-top:10px;
+}
+
+.background-green{
+	background-color:#4FC3A0;
+}
+
+.menutable{
+	background-color:transparent;
+	color: white;
+	line-height:25px;
+}
+
+.menutable tr td{
+	text-align:center;
+}
+
+#stampButton{
+	margin-top:15px;
+	margin-left:10px;
+}
+
+.menu-icon{
+	padding-right:10px;	
+}
