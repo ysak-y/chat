@@ -3,7 +3,8 @@ var app = require("http").createServer(handler),
 		io = require("socket.io").listen(app),
 		fs = require("fs");
 
-app.listen(1337);
+var port = "";
+app.listen(port);
 console.log("server listening ...");
 
 var model = []; //chat log

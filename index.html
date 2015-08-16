@@ -119,18 +119,23 @@
 	var CH = {}; //CHat
 	CH.id = "";
 	CH.model = [];
-	CH.socket = io.connect("http://localhost:1337", {transports: ["websocket"]});
+
+	//set your port number
+	var port = "";
+
+	CH.socket = io.connect("http://localhost:" + port, {transports: ["websocket"]});
 		
 	CH.socket.emit("login");
+
 	CH.socket.on("init", function(obj){
 		
 		CH.id = obj.id; //user identifier
 		CH.model = obj.model; //chat log
 		
-	// UI parts initialization
-	var messageField = new View.MessageField(CH.socket, CH.model);
-	var nameText = new View.NameText();
-	var footer = new View.Footer(CH.socket);
+		// UI parts initialization
+		var messageField = new View.MessageField(CH.socket, CH.model);
+		var nameText = new View.NameText();
+		var footer = new View.Footer(CH.socket);
 
 	});
 
