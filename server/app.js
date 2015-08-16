@@ -6,7 +6,7 @@ var app = require("http").createServer(handler),
 app.listen(1337);
 console.log("server listening ...");
 
-var model = [];
+var model = []; //chat log
 
 function handler(req, res){
 	res.writeHead(200, {"Content-Type":"text/plain"});
@@ -23,8 +23,6 @@ io.sockets.on("connection", function(socket){
 	});
 	
 	socket.on("pushMessage", function(data){
-		console.log(data[0]);
-		console.log("message is " + data);
 		model.push(data);
 		io.sockets.emit("reloadMessage", model);
 	});
