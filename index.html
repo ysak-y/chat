@@ -4,43 +4,10 @@
 <meta charset="UTF-8">
 <title>chat</title>
 
-<link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+<link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/balloon.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<script type="text/javascript">
-	
-	var ID;
-	window.jQuery = window.$ = require('./node_modules/jquery/dist/jquery.min');
-
-	$(function(){
-		
-		console.log("connect start");
-		var socketio = io.connect("http://localhost:1337");
-		
-		socketio.emit("login");
-		socketio.on("init", function(arr){
-			
-			var model = arr[0];
-			ID = arr[1];
-			var messageField = new MessageField(socketio, model);
-			var nameText = new NameText();
-			var footer = new Footer(socketio);
-
-		});
-	});
-	
-</script>
-
-<script src="bower_components/material-design-lite/material.min.js"></script>
-<script src="node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="lib/footerFixed.js"></script>
-<script src="bower_components/underscore/underscore-min.js"></script>
-<script src="bower_components/backbone/backbone-min.js"></script>
-<script src="lib/Model.js"></script>
-<script src="lib/view.js"></script>
 
 </head>
 <body>
@@ -50,14 +17,14 @@
 
 			<div class="mdl-grid mdl-grid--no-spacing main_content">
 				
-				<!-- ここから左半分 -->
+				<!-- left side -->
 				<div class="mdl-cell mdl-cell--2-col sidebar">
 					
 					<div class="mdl-grid mdl-grid--no-spacing">
 						<div class="mdl-cell mdl-cell--12-col mdl-shadow--4dp" id="profile">
 							<div id="face" class="mdl-cell mdl-cell--12-col">
 								<img src="img/human.png" height="100" width="100" alt="face image">
-								<!-- ここに顔画像のimg要素を置く -->
+								<!-- user face image -->
 							</div>
 							<div id="nameText" class="mdl-cell mdl-cell--12-col"></div>
 						</div>
@@ -82,23 +49,23 @@
 					</div>	
 				</div>
 
-				<!-- ここから右半分 -->
+				<!-- rigth side -->
 				<div id="rightField" class="mdl-cell mdl-cell--6-col mdl-grid mdl-grid--no-spacing">
 
-					<!-- ヘッダー -->
+					<!-- header -->
 					<div id="header" class="mdl-cell mdl-cell--12-col background-green">
 					 My Chat
 					</div>
 
 
-					<!-- メッセージ表示エリア -->
+					<!-- message area -->
 					<div id="messageFieldContainer" class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
 						
 						<table id="messageField" class="mdl-cell mdl-cell--12-col"></table>
 
 					</div>
 
-					<!-- スタンプウィンドウ -->
+					<!-- stamp area -->
 
 					<div id="stampFieldContainer" class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col">
 						
@@ -107,7 +74,7 @@
 
 					</div>
 
-					<!-- テキストエリア -->
+					<!-- text area -->
 						
 					<div class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col">
 					
@@ -137,16 +104,38 @@
 					</div>
 
 
-				</div><!-- ここまでが右半分-->
+				</div><!-- end of right side -->
 			
-			</div><!-- ここまでがgrid -->
+			</div><!-- end of grid -->
 
 		
-		</div><!-- ここまでがmdl-layout__content -->
+		</div><!-- end of mdl-layout__content -->
 
 	</div>
 
+<script src="node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+<script type="text/javascript">
 
+	var CH = {}; //CHat
+	CH.id = "";
+	CH.model = [];
+	CH.socket = io.connect("http://localhost:1337", {transports: ["websocket"]});
+		
+	CH.socket.emit("login");
+	CH.socket.on("init", function(obj){
+		
+		CH.id = obj.id; //user identifier
+		CH.model = obj.model; //chat log
+		
+	// UI parts initialization
+	var messageField = new View.MessageField(CH.socket, CH.model);
+	var nameText = new View.NameText();
+	var footer = new View.Footer(CH.socket);
+
+	});
+
+</script>
+<script type="text/javascript" src="index.js"></script>
 
 </body>
 </html>

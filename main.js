@@ -18,7 +18,6 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
 
 
-	console.log(__dirname + "/menu_icon.png");
 	var appIcon = new Tray(__dirname + "/menu_icon.png");
 	var contextMenu = Menu.buildFromTemplate([
 		{label: '選択メニュー1', type: 'radio'},

@@ -1,6 +1,8 @@
 
 var StampModel = Backbone.Model.extend({
+
 	defaults: {
+	
 		stamps: [
 			"stamp1",
 			"stamp2",
@@ -13,13 +15,29 @@ var StampModel = Backbone.Model.extend({
 			"stamp9",
 			"stamp10"
 		]
+
 	},
+
 	isStamp: function(txt){
+	
 		if (this.get("stamps").indexOf(txt) === -1){
+
 			return false;
+
 		}
+
 		else{
+
 			return true;
+		
 		}
+
 	}	
+
 });
+
+module.exports = {
+
+	StampModel: StampModel
+
+};
